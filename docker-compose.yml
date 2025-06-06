@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database (instead of InMemory for production)
+  database:
+    image: postgres:15-alpine
+    container_name: customer-database
+    environment:
+      POSTGRES_DB: customerdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - customer-network
+
+  # .NET Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: customer-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Host=database;Database=customerdb;Username=admin;Password=password123
+      - ConnectionStrings__AS400=DSN=AS400_ODBC;UID=APIUSER;PWD=API_PASSWORD
+      - AS400__UseRealConnection=false  # Set to true for production AS400
+      - Logging__LogLevel__Default=Information
+    ports:
+      - "5001:80"
+    depends_on:
+      - database
+    networks:
+      - customer-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: customer-frontend
+    environment:
+      - NODE_ENV=production
+      - BACKEND_API_URL=http://backend:80
+      - API_BASE_URL=http://localhost:5001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - customer-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Mock AS400 System (for development/testing)
+  # In production, this would be replaced with actual AS400 connectivity
+  mock-as400:
+    image: alpine:latest
+    container_name: mock-as400
+    command: >
+      sh -c "
+      echo 'Mock AS400 System Running';
+      echo 'RPG Program MUSTVALID is simulated in backend service';
+      echo 'For production: Configure actual AS400 connection in backend environment';
+      tail -f /dev/null
+      "
+    networks:
+      - customer-network
+
+  # Redis Cache (optional, for session management and caching)
+  redis:
+    image: redis:7-alpine
+    container_name: customer-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - customer-network
+    command: redis-server --appendonly yes
+
+  # Nginx Reverse Proxy (optional, for production setup)
+  nginx:
+    image: nginx:alpine
+    container_name: customer-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - customer-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  customer-network:
+    driver: bridge 

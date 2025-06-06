@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "IV+WmZxuQoDC5nkGL0LFj2iOKITK3EQf6PJbx+xD3SY=",
+  "Source": "CustomerUpdate.API",
+  "BasePath": "_content/CustomerUpdate.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

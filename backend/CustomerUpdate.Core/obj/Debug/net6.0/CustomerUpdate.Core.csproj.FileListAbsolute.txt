@@ -1,0 +1,12 @@
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/bin/Debug/net6.0/CustomerUpdate.Core.deps.json
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/bin/Debug/net6.0/CustomerUpdate.Core.dll
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/bin/Debug/net6.0/CustomerUpdate.Core.pdb
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.csproj.AssemblyReference.cache
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.AssemblyInfoInputs.cache
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.AssemblyInfo.cs
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.csproj.CoreCompileInputs.cache
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.dll
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/refint/CustomerUpdate.Core.dll
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/CustomerUpdate.Core.pdb
+/Users/can/Desktop/as/backend/CustomerUpdate.Core/obj/Debug/net6.0/ref/CustomerUpdate.Core.dll

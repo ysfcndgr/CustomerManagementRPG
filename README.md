@@ -6,6 +6,9 @@ A comprehensive customer management system built with Next.js frontend, .NET Cor
 
 ## 🎯 Overview
 
+![image](https://github.com/user-attachments/assets/aa8f4b35-ba8e-4977-979b-834e453c782c)
+
+
 This system allows users to update customer information through a modern web interface while leveraging legacy AS400 RPG programs for business rule validation. Customer data is validated by the RPG program `MUSTVALID` on AS400 and stored in DB2 database.
 
 ## 🏗️ Architecture

@@ -6,6 +6,13 @@ A comprehensive customer management system built with Next.js frontend, .NET Cor
 
 ## 🎯 Overview
 
+![image](https://github.com/user-attachments/assets/8126086c-0e70-4763-84df-d87f339a7a29)
+
+![image](https://github.com/user-attachments/assets/6c4f0a27-5e33-40f5-af56-1e10174dc798)
+
+![image](https://github.com/user-attachments/assets/2c611584-1f03-4529-9363-e05e45585f5d)
+
+Modern UI:
 ![image](https://github.com/user-attachments/assets/aa8f4b35-ba8e-4977-979b-834e453c782c)
 
 

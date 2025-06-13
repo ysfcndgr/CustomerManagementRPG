@@ -5,6 +5,8 @@
 A comprehensive customer management system built with Next.js frontend, .NET Core backend, and IBM AS400 RPG program integration for enterprise-grade data validation.
 
 ## 🎯 Overview
+Legacy Interface (Old UI)
+The images below showcase the legacy AS400 green-screen interface, which was previously used for customer information updates. This interface, while functional, lacked modern user experience (UX) standards and was not optimized for web or mobile 
 
 ![image](https://github.com/user-attachments/assets/8126086c-0e70-4763-84df-d87f339a7a29)
 
@@ -12,7 +14,9 @@ A comprehensive customer management system built with Next.js frontend, .NET Cor
 
 ![image](https://github.com/user-attachments/assets/2c611584-1f03-4529-9363-e05e45585f5d)
 
-Modern UI:
+Modern Web Interface (New UI)
+The new interface is a fully modernized web frontend built with Next.js and Tailwind CSS, offering a responsive, accessible, and user-friendly experience. It seamlessly integrates with the backend API and AS400 system for data validation and persistence.
+
 ![image](https://github.com/user-attachments/assets/aa8f4b35-ba8e-4977-979b-834e453c782c)
 
 

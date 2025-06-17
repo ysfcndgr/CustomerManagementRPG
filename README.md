@@ -4,6 +4,87 @@
 
 A comprehensive customer management system built with Next.js frontend, .NET Core backend, and IBM AS400 RPG program integration for enterprise-grade data validation.
 
+# System Architecture
+
+## Old System (Legacy)
+```mermaid
+graph LR
+    subgraph "Legacy System"
+        A[AS400 Terminal] -->|RPG Programs| B[AS400 Server]
+        B -->|SQL Queries| C[(DB2 Database)]
+        style A fill:#ff9999,stroke:#ff0000
+        style B fill:#ff9999,stroke:#ff0000
+        style C fill:#ff9999,stroke:#ff0000
+    end
+```
+
+## New System (Modern)
+```mermaid
+graph LR
+    subgraph "Modern System"
+        D[NextJS Frontend] -->|REST API| E[.NET 6 API]
+        E -->|Entity Framework| F[(PostgreSQL)]
+        style D fill:#99ff99,stroke:#00ff00
+        style E fill:#99ff99,stroke:#00ff00
+        style F fill:#99ff99,stroke:#00ff00
+    end
+```
+
+## Project Structure
+```
+├── frontend/                 # NextJS Frontend
+│   ├── src/                 # Source code
+│   │   ├── app/            # NextJS app directory
+│   │   └── lib/            # Shared libraries
+│   ├── package.json        # Dependencies
+│   └── Dockerfile         # Frontend container
+│
+├── backend/                 # .NET Backend
+│   ├── CustomerUpdate.API/  # API Layer (.NET 6)
+│   │   ├── Controllers/    # API Controllers
+│   │   └── DTOs/          # Data Transfer Objects
+│   ├── CustomerUpdate.Core/ # Business Logic
+│   └── CustomerUpdate.Infrastructure/ # Data Access
+│
+├── as400/                   # Legacy System
+│   ├── rpg/                # RPG Programs
+│   └── sql/                # SQL Scripts
+│
+└── database/               # PostgreSQL Scripts
+    └── init.sql           # Database Schema
+```
+
+## Technology Stack
+### Legacy System
+- 🖥️ AS400 Terminal
+- 💾 DB2 Database
+- 📝 RPG Programs
+- 📊 SQL Queries
+
+### Modern System
+- ⚛️ NextJS Frontend
+- 🎯 .NET 6 API
+- 🔄 Entity Framework Core
+- 🐘 PostgreSQL Database
+- 📦 NuGet Packages:
+  - Swashbuckle (Swagger)
+  - Entity Framework Core
+  - Serilog
+  - FluentValidation
+  - AutoMapper
+- 🐳 Docker Containers
+
+## System Comparison
+
+| Component | Old System | New System |
+|-----------|------------|------------|
+| Frontend | AS400 Terminal | NextJS |
+| Backend | AS400 RPG Programs | .NET 6 API |
+| Database | DB2 | PostgreSQL |
+| User Interface | Text-based Terminal | Modern Web UI |
+| Development | RPG/SQL | TypeScript/C# |
+| Build Tools | AS400 Tools | Docker Compose | 
+
 ## 🎯 Overview
 Legacy Interface (Old UI)
 The images below showcase the legacy AS400 green-screen interface, which was previously used for customer information updates. This interface, while functional, lacked modern user experience (UX) standards and was not optimized for web or mobile 

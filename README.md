@@ -104,9 +104,9 @@ This system allows users to update customer information through a modern web int
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Next.js       │    │   .NET Core     │    │   AS400/IBM i   │
+│   Next.js       │    │                 │    │   AS400/IBM i   │
 │   Frontend      │───▶│   Backend API   │───▶│   RPG Programs  │
-│   (React/TypeScript)│ │   (C#)          │    │   (MUSTVALID)   │
+│   (React/TypeScript)│ │   (Java,C#)          │    │   (MUSTVALID)   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                  │
                         ┌─────────────────┐

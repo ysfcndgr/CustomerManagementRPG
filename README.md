@@ -2,7 +2,7 @@
 
 **Modern Web Application with AS400 RPG Integration**
 
-A comprehensive customer management system built with Next.js frontend, .NET Core backend, and IBM AS400 RPG program integration for enterprise-grade data validation.
+A comprehensive customer management system built with Next.js frontend, .NET Core backend, **Java Spring Boot backend (alternative)**, and IBM AS400 RPG program integration for enterprise-grade data validation.
 
 # System Architecture
 
@@ -46,6 +46,12 @@ graph LR
 │   ├── CustomerUpdate.Core/ # Business Logic
 │   └── CustomerUpdate.Infrastructure/ # Data Access
 │
+├── backend-java/            # Java Spring Boot Backend (NEW)
+│   ├── src/                # Java source code
+│   ├── pom.xml             # Maven build file
+│   ├── Dockerfile          # Java backend container
+│   └── README.md           # Java backend usage
+│
 ├── as400/                   # Legacy System
 │   ├── rpg/                # RPG Programs
 │   └── sql/                # SQL Scripts
@@ -64,14 +70,10 @@ graph LR
 ### Modern System
 - ⚛️ NextJS Frontend
 - 🎯 .NET 6 API
-- 🔄 Entity Framework Core
-- 🐘 PostgreSQL Database
-- 📦 NuGet Packages:
-  - Swashbuckle (Swagger)
-  - Entity Framework Core
-  - Serilog
-  - FluentValidation
-  - AutoMapper
+- ☕ **Java Spring Boot API (alternative backend)**
+- 🔄 Entity Framework Core / Spring Data JPA
+- 🐘 PostgreSQL Database / H2 (Java dev)
+- 📦 NuGet Packages / Maven Dependencies
 - 🐳 Docker Containers
 
 ## System Comparison
@@ -150,6 +152,17 @@ cd customer-update-system
 # - Libraries (CUSTLIB,CUSTDATA,CUSTLOG)
 ```
 
+### Java Spring Boot Backend (Docker)
+```bash
+cd backend-java
+mvn clean package
+# Build Docker image
+docker build -t customerupdate-backend-java .
+# Run container
+docker run -p 8080:8080 customerupdate-backend-java
+# API available at: http://localhost:8080
+```
+
 ## 🔧 Development Setup
 
 ### Local Development (without Docker)
@@ -160,6 +173,19 @@ cd backend/CustomerUpdate.API
 dotnet restore
 dotnet run
 # API available at: http://localhost:5001
+```
+
+#### Backend (Java Spring Boot)
+```bash
+cd backend-java
+mvn clean install
+mvn spring-boot:run
+# API available at: http://localhost:8080
+
+# H2 Database Console
+# http://localhost:8080/h2-console
+# JDBC URL: jdbc:h2:mem:customerdb
+# User: sa (no password)
 ```
 
 #### Frontend (Next.js)
@@ -289,12 +315,12 @@ DATABASE_TYPE=PostgreSQL
 - **State Management**: React hooks
 
 ### Backend
-- **Framework**: .NET Core 6.0
-- **Architecture**: Clean Architecture
-- **Database**: PostgreSQL (production) / InMemory (development)
-- **ORM**: Entity Framework Core
-- **Validation**: FluentValidation
-- **Logging**: Serilog
+- **Framework**: .NET Core 6.0 **veya** Java Spring Boot 3+
+- **Architecture**: Clean Architecture (her iki backend için)
+- **Database**: PostgreSQL (production) / InMemory (development) / H2 (Java dev)
+- **ORM**: Entity Framework Core (.NET) / Spring Data JPA (Java)
+- **Validation**: FluentValidation (.NET) / Jakarta Validation (Java)
+- **Logging**: Serilog (.NET) / Spring Boot Logging (Java)
 - **Documentation**: Swagger/OpenAPI
 
 ### AS400 Integration
@@ -531,3 +557,10 @@ This project is proprietary software for internal enterprise use.
 ---
 
 **Built with ❤️ for modern enterprise integration** 
+
+## 🆕 Java Spring Boot Backend Desteği
+- Projeye alternatif olarak Java Spring Boot backend desteği eklenmiştir.
+- Tüm API endpoint'leri ve iş kuralları Java backend'de de mevcuttur.
+- H2 veritabanı ile hızlı geliştirme ve test imkanı sağlar.
+- Docker ile kolayca container olarak çalıştırılabilir.
+- AS400 entegrasyonu için stub servis hazırdır, gerçek ODBC bağlantısı eklenebilir.

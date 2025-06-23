@@ -23,7 +23,7 @@ graph LR
 graph LR
     subgraph "Modern System"
         D[NextJS Frontend] -->|REST API| E[Java Spring Boot API]
-        E -->|Entity Framework| F[(PostgreSQL)]
+   
         style D fill:#99ff99,stroke:#00ff00
         style E fill:#99ff99,stroke:#00ff00
         style F fill:#99ff99,stroke:#00ff00
